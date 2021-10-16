@@ -7,12 +7,22 @@
 body {
 	background-color: rgb(51, 51, 51);
 }
+
+.slider > input {
+	display: none;
+}
+
 .slider {
 	height: 350px;
 	margin: 100px auto 0;
 	width: 700px;
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+  row-gap: 20px;
+  column-gap: 20px;
 }
 .slider-window {
+  grid-column: 1/3;
   height: inherit;
 	overflow: hidden;
 	width: inherit;
@@ -20,7 +30,7 @@ body {
   box-shadow: 0 0 20px rgba(0, 0, 0, .5);
 }
 
-.slides-contaner {
+.slides-container {
 	height: inherit;
 	width: 500%;
   display: flex;
@@ -31,20 +41,33 @@ body {
 	height: inherit;
 	width: 20%;
 }
-#slide1:checked ~ .slider-window > .slides-contaner { transform: translateX(0%);}
-#slide2:checked ~ .slider-window > .slides-contaner { transform: translateX(-20%)}
-#slide3:checked ~ .slider-window > .slides-contaner { transform: translateX(-40%)}
-#slide4:checked ~ .slider-window > .slides-contaner { transform: translateX(-60%)}
-#slide5:checked ~ .slider-window > .slides-contaner { transform: translateX(-80%)}
+#slide1:checked ~ .slider-window > .slides-container { transform: translateX(0%);}
+#slide2:checked ~ .slider-window > .slides-container { transform: translateX(-20%)}
+#slide3:checked ~ .slider-window > .slides-container { transform: translateX(-40%)}
+#slide4:checked ~ .slider-window > .slides-container { transform: translateX(-60%)}
+#slide5:checked ~ .slider-window > .slides-container { transform: translateX(-80%)}
 
-.slider > input {
-	display: none;
+.quotes-window {
+  overflow: hidden;
 }
+.quotes-container {
+  height: inherit;
+	width: 500%;
+  display: flex;
+  transition: transform ease-in-out .5s; 
+}
+.quote {
+  color: #fff;
+  width: 20%;
+}
+#slide1:checked ~ .quotes-window > .quotes-container { transform: translateX(0%);}
+#slide2:checked ~ .quotes-window > .quotes-container { transform: translateX(-20%)}
+#slide3:checked ~ .quotes-window > .quotes-container { transform: translateX(-40%)}
+#slide4:checked ~ .quotes-window > .quotes-container { transform: translateX(-60%)}
+#slide5:checked ~ .quotes-window > .quotes-container { transform: translateX(-80%)}
 
 .slider .controls {
-	left: 50%;
-	margin-left: -98px;
-	position: absolute;
+
 }
 
 .slider label {
@@ -56,7 +79,6 @@ body {
 
 }
 
-.slider label:hover, 
 #slide1:checked ~ .controls label:nth-of-type(1):after,
 #slide2:checked ~ .controls label:nth-of-type(2):after,
 #slide3:checked ~ .controls label:nth-of-type(3):after,
@@ -75,8 +97,16 @@ body {
 	top: 5px;
 	width: 12px;
 	border-radius: 50%;
-  transition: background ease-in-out .5s;
+  transition: background ease-in-out .4s, border-color ease-in-out .4s;
   background: rgb(53, 136, 245);
+}
+.slider label:hover:after {
+  background: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);;
+}
+.slider label:active:after {
+  background: rgb(158, 158, 158);
+  border-color: rgb(158, 158, 158);
 }
 /* .slider label:before {
 	border: 2px solid rgb(53, 136, 245);
